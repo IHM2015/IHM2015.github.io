@@ -10,14 +10,31 @@
         font-size:18px;
         color:#444;
         padding:0 10px
-     }
-     h1,h2,h3 {
+    }
+    h1,h2,h3 {
         line-height:1.2
-     }
+    }
+    tr.border_bottom td {
+        border-bottom:1pt solid black;
+    }
     </style>
     </head>
 <body>
 <h1>HEIG-VD | IHM 2015</h1>
+
+<h2>Developing a configurable user interface for the Pebble Smartwatch</h2>
+<p>
+The goal of this project is to develop a custom user interface for the Pebble watch that can be configured by the user. The Smartwatch should be able to show information provided by the Smartphone it is paired with. We will provide you with some services from the Smartphone, and you have to create a user interface showing some of the fields as Pebble screens.
+</p>
+
+<p>
+DETAILED DESCRIPTION OF THE PROJECT...
+</p>
+
+<p>
+The following sections will give you an introduction to the technology you are going to use during this project, and will describe the setup we propose as starting point of your implementations. 
+</p>
+
 <h2>The Pebble Smartwatch</h2>
 <p>
 The Pebble Smartwatch is a smartwatch developed by Pebble Technology Corporation and released in 2013 that received the majority of its initial funding via the crowdfunding platform Kickstarter. The watch features a black and white low power LCD, a programmable CPU, memory, storage, Bluetooth, a vibrating motor, a magnetometer, an ambient light sensor, and an accelerometer; these extend its use into many roles including interacting with smartphone notifications, activity tracking, gaming, map display, and golf tracking. The Pebble is compatible with Android and iOS devices. When connected to one of these devices via Bluetooth, it will vibrate and display text messages, emails, incoming calls, and notifications from social media accounts when they are received on the paired device. It can also act as a remote control for the phone, or for cameras such as the GoPro. As of February 2014, the Pebble app store had over 1000 applications developed using Pebble's free software development kit (SDK). (From Wikipedia)
@@ -41,29 +58,46 @@ These are some examples of Watchapps and Watchfaces:
     <td><img src="Zawpd8f.png" height="188" width="206"></td>
     <td><img src="games-pebble-wired-design.jpg" height="202" width="296"></td> 
   </tr>
-    <tr>
+  <tr>
     <td align="center">Time and weather</td>
     <td align="center">Sports</td>
     <td align="center">Games</td> 
   </tr>
 </table>
 
-<h2>Developping a Configurable Watchapp</h2>
+<h2>Project Setup</h2>
+
+<h3>The Smartphone App</h3>
 <p>
-The goal of this project is to develop a custom Watchapp that can be configured by the user. We will provide you with some services from the Smartphone, and you have to create a user interface showing some of those services as Pebble screens.
+Pebble Watchapps can run both independently, or sharing information with an app running on a paired Smartphone. In the particular case of this project, we provide you with an app called <em>Pebble IHM</em> who runs on the Smartphone and gathers the information that need to be shown in the Pebble screen.
 </p>
 <p>
-The available services include:
+<em>Pebble IHM</em> is already installed on the Smartphones we prepared for you. However, you can also clone the base <a href="http://developer.android.com/sdk/index.html">Android studio</a> project from <a href="https://github.com/">GitHub</a> by using:
+</p>
+
+<p>
+<tt>git clone https://github.com/itzkha/IHM_2015.git</tt>
+</p>
+
+<p>
+This Smartphone app gathers information from its own sensors, or from the web using different APIs (e.g., <a href="http://home.openweathermap.org/users/sign_in">weather</a>, <a href="https://developers.google.com/maps/documentation/elevation/intro">altitude</a>). The available fields include:
 <ul>
-    <li>Location</li>
-    <li>Elevation</li>
-    <li>Weather</li>
+    <li>Location related</li>
+    <ul>
+        <li>Location</li>
+        <li>Distance to a previously defined point</li>
+        <li>Heading to a previously defined point</li>
+        <li>Elevation</li>
+        <li></li>
+    </ul>    
+    <li>Weather related</li>
     <ul>
         <li>Status</li>
         <li>Temperature</li>
         <li>Pressure</li>
         <li>Humidity</li>
-        <li>Wind</li>
+        <li>Wind speed</li>
+        <li>Wind direction</li>
     </ul>
     <li>Time related</li>
     <ul>
@@ -72,6 +106,10 @@ The available services include:
         <li>Train schedule</li>
     </ul>
 </ul>
+</p>
+
+<p>
+<em>Pebble IHM</em> will communicate with the Pebble watch via Bluetooth by using pre-formatted messages. These messages are items on a dictionary with key values that need to be common to both, Smartphone and Pebble, applications. The complete documentation of the <a href="https://developer.getpebble.com/docs/c/Foundation/AppMessage/">AppMessage</a> API can be found at <a href="https://developer.getpebble.com/guides/pebble-apps/communications/">https://developer.getpebble.com/guides/pebble-apps/communications/</a>.
 </p>
 
 <h3>How to create a Pebble Watchapp</h3>
@@ -90,10 +128,93 @@ Pebble Watchapps are written in C. Pebble offers a <a href="https://developer.ge
 
 <h4>CloudPebble</h4>
 <p>
-Pebble Watchapps can be created without installing any software locally by using the online Pebble development platform <a href="https://cloudpebble.net/">CloudPebble</a>. In order to use CloudPebble, you first have to create a user account and sing into this account. Then, download the file <a href="ihm_2015.zip">ihm_2015.zip</a> and import the project into your account (<em>PROJECTS -> IMPORT -> UPLOAD ZIP -> IMPORT</em>).
+Pebble Watchapps can be created without installing any software locally by using the online Pebble development platform <a href="https://cloudpebble.net/">CloudPebble</a>. In order to use CloudPebble, you first have to create a user account and sing into this account.
+</p>
+<p>
+By selecting "SOURCE FILES", CloudPebble allows you to create and edit your source files:
+</p>
+<img src="CloudPebble_edit.png" height="609" width="650">
 
+<p>
+By selecting "COMPILATION", CloudPebble allows you to compile, debug and simulate your code:
+</p>
+<img src="CloudPebble_deploy.png" height="609" width="650">
+
+<p>
+Once the Watchapp is ready, you can deploy it into your watch by sinchronizing your project in CloudPebble with your smartphone using the button "INSTALL AND RUN".
 </p>
 
+<h4>The Pebble IHM Watchapp</h4>
+<p>
+We provide you with a base Watchapp also called <em>Pebble IHM</em> that you can use as starting point for building your own interface. You can download the file <a href="ihm_2015.zip">ihm_2015.zip</a> and import the project into your CloudPebble account (<em>PROJECTS -> IMPORT -> UPLOAD ZIP -> IMPORT</em>).
+</p>
+
+<h3>Running the Example Code</h3>
+<p>
+This section describes the steps needed to make the example code to work.
+</p>
+
+<h4>Smartphone</h4>
+<p>
+Launch <em>Pebble IHM</em> on the Smartphone. The app will ask you to enter the UUID of the Pebble Watchapp to which it is going to communicate. The UUID of the example Watchapp can be obtained from the project settings on CloudPebble under the field "APP UUID". Once you acknowledge the UUID, you must turn on the switch <em>Enable API</em>. It will initialize the different APIs employed to obtain information from the web, and prepare the Smartphone for sending these items to the Pebble watch.
+</p>
+
+<h4>Pebble</h4>
+<p>
+Navigate through the main menu and launch <em>Pebble IHM</em> on the watch. The Watchapp will start communicating with the Smartphone app and will ask for a different field each time you press the <em>UP</em> button (i.e., top button on the right side of the watch).
+</p>
+<table style="width:70%">
+  <tr class="border_bottom">
+    <td>Press number</td>
+    <td>Item description</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Location: latitude and longitude</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Distance and heading to a predefined point</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Elevation</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Weather status</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Temperature</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Pressure</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Humidity</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Wind speed and wind direction</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Sunrise time</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Sunset time</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Time of the next train to a predefined city</td>
+  </tr>
+</table>
+
 </body>
+
 </html>
 
