@@ -18,9 +18,80 @@
     </head>
 <body>
 <h1>HEIG-VD | IHM 2015</h1>
-<h2>The Pebble watch</h2>
+<h2>The Pebble Smartwatch</h2>
 <p>
-This is a test...
+The Pebble Smartwatch is a smartwatch developed by Pebble Technology Corporation and released in 2013 that received the majority of its initial funding via the crowdfunding platform Kickstarter. The watch features a black and white low power LCD, a programmable CPU, memory, storage, Bluetooth, a vibrating motor, a magnetometer, an ambient light sensor, and an accelerometer; these extend its use into many roles including interacting with smartphone notifications, activity tracking, gaming, map display, and golf tracking. The Pebble is compatible with Android and iOS devices. When connected to one of these devices via Bluetooth, it will vibrate and display text messages, emails, incoming calls, and notifications from social media accounts when they are received on the paired device. It can also act as a remote control for the phone, or for cameras such as the GoPro. As of February 2014, the Pebble app store had over 1000 applications developed using Pebble's free software development kit (SDK). (From Wikipedia)
+</p>
+
+<h3>Pebble Watchapps and Watchfaces</h3>
+<p>
+The Pebble has custom screens that show some information to the user. They allow the user to interact with the Pebble watch and thus, with the smartphone that paired the smartwatch. Wathapps and Watchfaces can be downloaded from the Pebble store, or implemented using the <a href="https://developer.getpebble.com/tutorials/watchface-tutorial/part1/">SDK</a> provided by Pebble.
+</p>
+<p>
+Both Watchapps and Watchfaces can be developped using the Pebble SDK. The main difference between the two kinds are that watchfaces are selected using the Up and Down buttons and serve as the default display on the watch. This also means that these buttons are not available for custom behavior (Back and Select are also not available to watchfaces). In contrast, watchapps are launched from the Pebble system menu. These have more capabilities such as button clicks and menu elements.
+</p>
+
+<p>
+These are some examples of Watchapps and Watchfaces:
+</p>
+
+<table style="width:100%">
+  <tr>
+    <td><img src="1397_900.jpg" height="157" width="147"></td>
+    <td><img src="Zawpd8f.png" height="188" width="206"></td>
+    <td><img src="games-pebble-wired-design.jpg" height="202" width="296"></td> 
+  </tr>
+    <tr>
+    <td align="center">Time and weather</td>
+    <td align="center">Sports</td>
+    <td align="center">Games</td> 
+  </tr>
+</table>
+
+<h2>Developping a Configurable Watchapp</h2>
+<p>
+The goal of this project is to develop a custom Watchapp that can be configured by the user. We will provide you with some services from the Smartphone, and you have to create a user interface showing some of those services as Pebble screens.
+</p>
+<p>
+The available services include:
+<ul>
+    <li>Location</li>
+    <li>Elevation</li>
+    <li>Weather</li>
+    <ul>
+        <li>Status</li>
+        <li>Temperature</li>
+        <li>Pressure</li>
+        <li>Humidity</li>
+        <li>Wind</li>
+    </ul>
+    <li>Time related</li>
+    <ul>
+        <li>Sunrise</li>
+        <li>Sunset</li>
+        <li>Train schedule</li>
+    </ul>
+</ul>
+</p>
+
+<h3>How to create a Pebble Watchapp</h3>
+<p>
+There are two possible setups for creating Pebble Watchapps:
+<ul>
+    <li>Using the <a href="https://cloudpebble.net/">CloudPebble</a> web interface</li>
+    <li>Installing the Pebble <a href="https://developer.getpebble.com/sdk/">SDK</a> locally</li>
+</ul>
+You have to decide which setup to use before starting. The examples we prepared for you were done using CloudPebble, but you are free to use the setup that better suits your preferences.
+</p>
+
+<p>
+Pebble Watchapps are written in C. Pebble offers a <a href="https://developer.getpebble.com/tutorials/beginner/primer/">tutorial</a> to learn the basics of the C language. Moreover, we recommend you to follow the tutorial at <a href="https://developer.getpebble.com/guides/pebble-apps/app-structure/">https://developer.getpebble.com/guides/pebble-apps/app-structure/</a> to acquire a basic understanding of how to create your own Watchapp.
+</p>
+
+<h4>CloudPebble</h4>
+<p>
+Pebble Watchapps can be created without installing any software locally by using the online Pebble development platform <a href="https://cloudpebble.net/">CloudPebble</a>. In order to use CloudPebble, you first have to create a user account and sing into this account. Then, download the file <a href="ihm_2015.zip">ihm_2015.zip</a> and import the project into your account (<em>PROJECTS -> IMPORT -> UPLOAD ZIP -> IMPORT</em>).
+
 </p>
 
 </body>
