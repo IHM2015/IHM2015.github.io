@@ -35,8 +35,8 @@ The goal of this project is to develop a custom user interface for the Pebble wa
 <p>
 <ul>
     <li>You have to create a Watchapp with 4 configurable screens</li>
-    <li>Each Pebble screen can display two items</li>
-    <li>You have to create a Pebble menu where the user can configure which information to put in each one of the screens</li>
+    <li>Each Pebble screen has two slots for displaying information</li>
+    <li>You have to create a Pebble menu where the user can configure which information to put in each one of the screen slots</li>
     <li>You have to program the buttons of the Pebble (up and down) for switching between screens</li>
 </ul>
 </p>
@@ -123,7 +123,10 @@ This Smartphone app gathers information from its own sensors, or from the web us
         <li>Sunrise</li>
         <li>Sunset</li>
         <li>Train schedule</li>
+        <li>Uptime of the application</li>
+        <li>Time performing physical activity</li>
     </ul>
+    <li>Battery level of the watch</li>
 </ul>
 </p>
 
@@ -168,7 +171,7 @@ Once the Watchapp is ready, you can deploy it into your watch by sinchronizing y
 
 <h4>The Pebble IHM Watchapp</h4>
 <p>
-We provide you with a base Watchapp also called <em>Pebble IHM</em> that you can use as starting point for building your own interface. You can download the file <a href="ihm_2015.zip">ihm_2015.zip</a> and import the project into your CloudPebble account (<em>PROJECTS -> IMPORT -> UPLOAD ZIP -> IMPORT</em>).
+We provide you with a base Watchapp also called <em>Pebble IHM</em> that you can use as starting point for building your own interface. You can download the file <a href="pebble_ihm.zip">pebble_ihm.zip</a> and import the project into your CloudPebble account (<em>PROJECTS -> IMPORT -> UPLOAD ZIP -> IMPORT</em>).
 </p>
 
 <h3>Running the Example Code</h3>
@@ -244,6 +247,18 @@ Navigate through the main menu and launch <em>Pebble IHM</em> on the watch. The 
   <tr>
     <td>13</td>
     <td>Time of the next train to a predefined city</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Uptime of the application</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>How much of time the user develops some physical activity</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>Battery level of the watch</td>
   </tr>
 </table>
 
