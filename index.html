@@ -21,6 +21,10 @@
     </head>
 <body>
 <h1>HEIG-VD | IHM 2015</h1>
+<div align="right">Andres Perez-Uribe</div>
+<div align="right">Jonathan Bischof</div>
+<div align="right">Hector Satizabal</div>
+<hr>
 
 <h2>Developing a configurable user interface for the Pebble Smartwatch</h2>
 <p>
@@ -42,7 +46,7 @@ The Pebble Smartwatch is a smartwatch developed by Pebble Technology Corporation
 
 <h3>Pebble Watchapps and Watchfaces</h3>
 <p>
-The Pebble has custom screens that show some information to the user. They allow the user to interact with the Pebble watch and thus, with the smartphone that paired the smartwatch. Wathapps and Watchfaces can be downloaded from the Pebble store, or implemented using the <a href="https://developer.getpebble.com/tutorials/watchface-tutorial/part1/">SDK</a> provided by Pebble.
+The Pebble has custom screens that show some information to the user. They allow the user to interact with the Pebble watch and thus, with the smartphone that paired the smartwatch. Watchapps and Watchfaces can be downloaded from the Pebble store, or implemented using the <a href="https://developer.getpebble.com/tutorials/watchface-tutorial/part1/">SDK</a> provided by Pebble.
 </p>
 <p>
 Both Watchapps and Watchfaces can be developped using the Pebble SDK. The main difference between the two kinds are that watchfaces are selected using the Up and Down buttons and serve as the default display on the watch. This also means that these buttons are not available for custom behavior (Back and Select are also not available to watchfaces). In contrast, watchapps are launched from the Pebble system menu. These have more capabilities such as button clicks and menu elements.
@@ -72,7 +76,7 @@ These are some examples of Watchapps and Watchfaces:
 Pebble Watchapps can run both independently, or sharing information with an app running on a paired Smartphone. In the particular case of this project, we provide you with an app called <em>Pebble IHM</em> who runs on the Smartphone and gathers the information that need to be shown in the Pebble screen.
 </p>
 <p>
-<em>Pebble IHM</em> is already installed on the Smartphones we prepared for you. However, you can also clone the base <a href="http://developer.android.com/sdk/index.html">Android studio</a> project from <a href="https://github.com/">GitHub</a> by using:
+<em>Pebble IHM</em> is already installed on the Smartphones we prepared for you. However, you can also clone the base <a href="http://developer.android.com/sdk/index.html">Android studio</a> project from <a href="https://github.com/itzkha/IHM_2015">GitHub</a> by using:
 </p>
 
 <p>
@@ -88,7 +92,6 @@ This Smartphone app gathers information from its own sensors, or from the web us
         <li>Distance to a previously defined point</li>
         <li>Heading to a previously defined point</li>
         <li>Elevation</li>
-        <li></li>
     </ul>    
     <li>Weather related</li>
     <ul>
@@ -141,6 +144,9 @@ By selecting "COMPILATION", CloudPebble allows you to compile, debug and simulat
 <img src="CloudPebble_deploy.png" height="609" width="650">
 
 <p>
+If you configure CloudPebble to use your Smartphone instead of the emulator (i.e., selecting PHONE instead of EMULATOR) you can deploy your source code directly to your phone while editing the sources by pressing the ply button (the green button with the triangle pointing to the right).
+</p>
+<p>
 Once the Watchapp is ready, you can deploy it into your watch by sinchronizing your project in CloudPebble with your smartphone using the button "INSTALL AND RUN".
 </p>
 
@@ -158,62 +164,76 @@ This section describes the steps needed to make the example code to work.
 <p>
 Launch <em>Pebble IHM</em> on the Smartphone. The app will ask you to enter the UUID of the Pebble Watchapp to which it is going to communicate. The UUID of the example Watchapp can be obtained from the project settings on CloudPebble under the field "APP UUID". Once you acknowledge the UUID, you must turn on the switch <em>Enable API</em>. It will initialize the different APIs employed to obtain information from the web, and prepare the Smartphone for sending these items to the Pebble watch.
 </p>
+<p>
+TODO: Better explain how the Smartphone app works
+</p>
 
 <h4>Pebble</h4>
 <p>
-Navigate through the main menu and launch <em>Pebble IHM</em> on the watch. The Watchapp will start communicating with the Smartphone app and will ask for a different field each time you press the <em>UP</em> button (i.e., top button on the right side of the watch).
+Navigate through the main menu and launch <em>Pebble IHM</em> on the watch. The Watchapp will start communicating with the Smartphone app and will configure something in it, or ask for a different field each time you press the <em>UP</em> button (i.e., top button on the right side of the watch).
 </p>
-<table style="width:70%">
+<table style="width:100%">
   <tr class="border_bottom">
     <td>Press number</td>
     <td>Item description</td>
   </tr>
   <tr>
     <td>1</td>
-    <td>Location: latitude and longitude</td>
+    <td>Ask for location: latitude and longitude</td>
   </tr>
   <tr>
     <td>2</td>
-    <td>Distance and heading to a predefined point</td>
+    <td>Set te current location as target location for navigation</td>
   </tr>
   <tr>
     <td>3</td>
-    <td>Elevation</td>
+    <td>Starts the thread that computes the distance and heading for navigation and ask for distance and heading to the predefined target</td>
   </tr>
   <tr>
     <td>4</td>
-    <td>Weather status</td>
+    <td>Stops the thread that computes the distance and heeading for navigation</td>
   </tr>
   <tr>
     <td>5</td>
-    <td>Temperature</td>
+    <td>Elevation</td>
   </tr>
   <tr>
     <td>6</td>
-    <td>Pressure</td>
+    <td>Weather status</td>
   </tr>
   <tr>
     <td>7</td>
-    <td>Humidity</td>
+    <td>Temperature</td>
   </tr>
   <tr>
     <td>8</td>
-    <td>Wind speed and wind direction</td>
+    <td>Pressure</td>
   </tr>
   <tr>
     <td>9</td>
-    <td>Sunrise time</td>
+    <td>Humidity</td>
   </tr>
   <tr>
     <td>10</td>
-    <td>Sunset time</td>
+    <td>Wind speed and wind direction</td>
   </tr>
   <tr>
     <td>11</td>
+    <td>Sunrise time</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Sunset time</td>
+  </tr>
+  <tr>
+    <td>13</td>
     <td>Time of the next train to a predefined city</td>
   </tr>
 </table>
 
+
+<hr>
+<div align="left">November 2015</div>
 </body>
 
 </html>
